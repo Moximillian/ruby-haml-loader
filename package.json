@@ -1,15 +1,16 @@
 {
   "name": "ruby-haml-loader",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Webpack Haml loader using actual Ruby `haml`",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "adamdicarlo/ruby-haml-loader"
+    "url": "Moximillian/ruby-haml-loader"
   },
-  "homepage": "https://github.com/adamdicarlo/ruby-haml-loader",
+  "homepage": "https://github.com/Moximillian/ruby-haml-loader",
   "license": "MIT",
   "dependencies": {
+    "es6-templates": "^0.2.3",
     "loader-utils": "0.2.x"
   }
 }

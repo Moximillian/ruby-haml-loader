@@ -1,4 +1,5 @@
 var spawn = require('child_process').spawn
+var compile = require("es6-templates").compile;
 
 module.exports = function (source) {
   var callback = this.async()
@@ -24,7 +25,15 @@ module.exports = function (source) {
     }.bind(this))
     haml.on('close', function (code) {
       if (code === 0) {
-        callback(null, 'module.exports = ' + JSON.stringify(result) + ';')
+        if (true) { //config.interpolate) {
+          // Double escape quotes so that they are not unescaped completely in the template string
+          result = result.replace(/\\"/g, "\\\\\"");
+          result = result.replace(/\\'/g, "\\\\\'");
+          result = compile('`' + result + '`').code;
+        } else {
+        	 result = JSON.stringify(result)
+        }
+        callback(null, 'module.exports = ' + result + ';');
       } else {
         this.emitError('`haml` exited with code ' + code)
         callback('haml exited with code ' + code)
